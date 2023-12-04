@@ -9,7 +9,7 @@ class MockAuthenticVisionSdkPlatform
     implements AuthenticVisionSdkPlatform {
 
   @override
-  Future<String?> getPlatformVersion() => Future.value('42');
+  Future<String?> getSdkVersion() => Future.value('42');
 }
 
 void main() {
@@ -19,11 +19,11 @@ void main() {
     expect(initialPlatform, isInstanceOf<MethodChannelAuthenticVisionSdk>());
   });
 
-  test('getPlatformVersion', () async {
+  test('getSdkVersion', () async {
     AuthenticVisionSdk authenticVisionSdkPlugin = AuthenticVisionSdk();
     MockAuthenticVisionSdkPlatform fakePlatform = MockAuthenticVisionSdkPlatform();
     AuthenticVisionSdkPlatform.instance = fakePlatform;
 
-    expect(await authenticVisionSdkPlugin.getPlatformVersion(), '42');
+    expect(await authenticVisionSdkPlugin.getSdkVersion(), '42');
   });
 }

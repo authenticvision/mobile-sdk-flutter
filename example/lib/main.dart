@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+  String _sdkVersion = 'Unknown';
   final _authenticVisionSdkPlugin = AuthenticVisionSdk();
 
   @override
@@ -27,14 +27,13 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String platformVersion;
+    String sdkVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await _authenticVisionSdkPlugin.getPlatformVersion() ?? 'Unknown platform version';
+      sdkVersion = await _authenticVisionSdkPlugin.getSdkVersion() ?? 'Error';
     } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      sdkVersion = 'Failed to get platform version.';
     }
 
     // If the widget was removed from the tree while the asynchronous platform
@@ -43,7 +42,7 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _platformVersion = platformVersion;
+      _sdkVersion = sdkVersion;
     });
   }
 
@@ -55,7 +54,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Text(_sdkVersion),
         ),
       ),
     );

@@ -1,4 +1,4 @@
-group 'com.authenticvision.flutter.authentic_vision_sdk'
+group 'com.authenticvision.flutter'
 version '1.0'
 
 buildscript {
@@ -23,7 +23,7 @@ apply plugin: 'com.android.library'
 
 android {
     if (project.android.hasProperty("namespace")) {
-        namespace 'com.authenticvision.flutter.authentic_vision_sdk'
+        namespace 'com.authenticvision.flutter'
     }
 
     compileSdkVersion 33

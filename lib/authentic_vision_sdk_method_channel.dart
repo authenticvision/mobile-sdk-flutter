@@ -10,8 +10,7 @@ class MethodChannelAuthenticVisionSdk extends AuthenticVisionSdkPlatform {
   final methodChannel = const MethodChannel('authentic_vision_sdk');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
+  Future<String?> getSdkVersion() async {
+    return await methodChannel.invokeMethod<String>('getSdkVersion');
   }
 }

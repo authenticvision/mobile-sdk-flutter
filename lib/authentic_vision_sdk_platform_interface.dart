@@ -8,7 +8,8 @@ abstract class AuthenticVisionSdkPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static AuthenticVisionSdkPlatform _instance = MethodChannelAuthenticVisionSdk();
+  static AuthenticVisionSdkPlatform _instance =
+      MethodChannelAuthenticVisionSdk();
 
   /// The default instance of [AuthenticVisionSdkPlatform] to use.
   ///
@@ -23,7 +24,7 @@ abstract class AuthenticVisionSdkPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
+  Future<String?> getSdkVersion() {
+    throw UnimplementedError('getSdkVersion() has not been implemented.');
   }
 }

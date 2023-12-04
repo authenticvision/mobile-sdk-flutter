@@ -1,4 +1,4 @@
-package com.authenticvision.flutter.authentic_vision_sdk;
+package com.authenticvision.flutter;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -15,12 +15,12 @@ import org.junit.Test;
  * you can run them directly from IDEs that support JUnit such as Android Studio.
  */
 
-public class AuthenticVisionSdkPluginTest {
+public class AvSdkPluginTest {
   @Test
-  public void onMethodCall_getPlatformVersion_returnsExpectedValue() {
-    AuthenticVisionSdkPlugin plugin = new AuthenticVisionSdkPlugin();
+  public void onMethodCall_getSdkVersion_returnsExpectedValue() {
+    AvSdkPlugin plugin = new AvSdkPlugin();
 
-    final MethodCall call = new MethodCall("getPlatformVersion", null);
+    final MethodCall call = new MethodCall("getSdkVersion", null);
     MethodChannel.Result mockResult = mock(MethodChannel.Result.class);
     plugin.onMethodCall(call, mockResult);
 

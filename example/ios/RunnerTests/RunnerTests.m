@@ -15,19 +15,11 @@
 @implementation RunnerTests
 
 - (void)testExample {
-  AuthenticVisionSdkPlugin *plugin = [[AuthenticVisionSdkPlugin alloc] init];
-
-  FlutterMethodCall *call = [FlutterMethodCall methodCallWithMethodName:@"getPlatformVersion"
-                                                              arguments:nil];
-  XCTestExpectation *expectation = [self expectationWithDescription:@"result block must be called"];
-  [plugin handleMethodCall:call
-                    result:^(id result) {
-                      NSString *expected = [NSString
-                          stringWithFormat:@"iOS %@", UIDevice.currentDevice.systemVersion];
-                      XCTAssertEqualObjects(result, expected);
-                      [expectation fulfill];
-                    }];
-  [self waitForExpectationsWithTimeout:1 handler:nil];
+    AVKFlutterPlugin *plugin = [[AVKFlutterPlugin alloc] init];
+    FlutterMethodCall *call = [FlutterMethodCall methodCallWithMethodName:@"getSdkVersion" arguments:nil];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"result block must be called"];
+    [plugin handleMethodCall:call result:^(id result) { [expectation fulfill]; }];
+    [self waitForExpectationsWithTimeout:1 handler:nil];
 }
 
 @end
