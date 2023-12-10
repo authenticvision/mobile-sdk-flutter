@@ -27,4 +27,8 @@ abstract class AuthenticVisionSdkPlatform extends PlatformInterface {
   Future<String?> getSdkVersion() {
     throw UnimplementedError('getSdkVersion() has not been implemented.');
   }
+
+  Future<String?> scanOneLabel() {
+    throw UnimplementedError('scanOneLabel() has not been implemented.');
+  }
 }

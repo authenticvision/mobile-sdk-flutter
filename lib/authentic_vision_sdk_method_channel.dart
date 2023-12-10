@@ -13,4 +13,9 @@ class MethodChannelAuthenticVisionSdk extends AuthenticVisionSdkPlatform {
   Future<String?> getSdkVersion() async {
     return await methodChannel.invokeMethod<String>('getSdkVersion');
   }
+
+  @override
+  Future<String?> scanOneLabel() async {
+    return await methodChannel.invokeMethod<String>('scanOneLabel');
+  }
 }

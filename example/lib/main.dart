@@ -17,6 +17,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _sdkVersion = 'Unknown';
+  String _scanResult = '';
   final _authenticVisionSdkPlugin = AuthenticVisionSdk();
 
   @override
@@ -46,6 +47,19 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  Future<void> scanLabel() async {
+    try {
+      String? result = await _authenticVisionSdkPlugin.scanOneLabel();
+      setState(() {
+        _scanResult = result ?? 'no result';
+      });
+    } catch (e) {
+      setState(() {
+        _scanResult = 'exception: $e';
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -54,7 +68,21 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text(_sdkVersion),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ElevatedButton(
+                onPressed: scanLabel,
+                child: const Text('Scan Label'),
+              ),
+              if (_scanResult.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(_scanResult),
+                ),
+              Text(_sdkVersion),
+            ],
+          ),
         ),
       ),
     );
